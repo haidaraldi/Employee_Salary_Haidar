@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Employee_Salary_Haidar.ViewModel.PayrollsViewModel>
+
+@{
+    ViewData["Title"] = "Index";   
+}
+
+<h1>List Of Employee Payroll</h1>
+
+<p>
+    <h8>Choose One For Calculate Salary:</h8>
+    <a asp-action="CreateRegular">Regular</a> |
+    <a asp-action="CreateContractual">Contractual</a>
+</p>
+
+@using (Html.BeginForm("Index", "Payrolls", FormMethod.Get))
+{
+<p>
+    Employee Type: @Html.DropDownList("EmployeeType", "Select Employee Type") |    
+    Period: @Html.DropDownList("Period", "Select Period")
+    <input type="submit" value="Filter" />
+</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Period)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BirthDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TIN)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Absences)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WorkDays)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SalaryTotal)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Period)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIN)
+                </td>
+                @if (item.Absences != 0)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Absences)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Not For Contractual
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkDays)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalaryTotal)
+                </td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+
+
+

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Employee_Salary_Haidar.ViewModel.PayrollsViewModel>
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+
+    @foreach (var item in Model)
+    {
+        @if (item.EmployeeType == "Regular")
+        {
+            <h4>Payroll</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.EmployeeType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.EmployeeType)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.BirthDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.TIN)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.TIN)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.Absences)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.Absences)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.SalaryTotal)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.SalaryTotal)
+                </dd>
+            </dl>
+
+        }
+        else
+        {
+            <h4>Payroll</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.EmployeeType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.EmployeeType)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.BirthDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.TIN)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.TIN)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.WorkDays)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.WorkDays)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelItem => item.SalaryTotal)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.SalaryTotal)
+                </dd>
+            </dl>
+
+        }
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="@item.ID" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+
+    }
+</div>

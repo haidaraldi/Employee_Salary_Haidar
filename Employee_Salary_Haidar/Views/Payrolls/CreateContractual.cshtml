@@ -1,0 +1,47 @@
+﻿@model Employee_Salary_Haidar.Models.Payroll
+
+@{
+    ViewData["Title"] = "Create Contractual";
+}
+
+<h1>Create</h1>
+
+<h4>Payroll Contractual Employee For Period @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month) @DateTime.Now.Year</h4>
+<hr />
+<div class="row">
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+
+    }
+    <div class="col-md-4">
+        <form asp-action="CreateContractual">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmployeeID" class="control-label"></label>
+                <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.EmployeeID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkDays" class="control-label"></label>
+                <input asp-for="WorkDays" class="form-control" />
+                <span asp-validation-for="WorkDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
